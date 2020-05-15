@@ -1,52 +1,9 @@
 from room import Room
 from player import Player
 from world import World
-from util import Queue
 
 import random
 from ast import literal_eval
-
-seed = random.randint(0, 217120)
-random.seed(185393)
-
-def reverse(direction):
-    if direction == 'n':
-        return 's'
-    elif direction == 's':
-        return 'n'
-    elif direction == 'e':
-        return 'w'
-    else:
-        return 'e'
-    
-
-def new_entry(room, visited_rooms):
-    visited_rooms[room.id] = {}
-    
-    for exit_direction in room.get_exits():
-        visited_rooms[room.id][room_direction] = '?'
-        
-
-        
-def bfs(visited_rooms):
-    room = player.current_room
-    q = Queue()
-    q.enqueue([room.id])
-    visited = set()
-    while q.size() > 0:
-        path = q.dequeue()
-        last = path[-1]
-        if last not in visited:
-            visited.add(last)
-            for exit_direction in visited_rooms[last]:
-                if (visited_room[last][exit_direction] == '?'):
-                    return path
-                elif (visited_rooms[last][exit_direction] not in visited):
-                    new_path = path + [visited_rooms[last][exit_direction]]
-                    q.enqueue(new_path)
-                
-    return path
-        
 
 # Load world
 world = World()
